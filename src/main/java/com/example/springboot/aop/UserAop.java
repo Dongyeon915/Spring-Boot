@@ -1,31 +1,38 @@
 package com.example.springboot.aop;
 
+import com.example.springboot.dto.UserDto;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class UserAop {
 
-//    @Pointcut("execution(* com.example.springboot.controller..*.*(..))")
-//    public void aopRange() {
-//
-//    }
+    @Pointcut("execution(* com.example.springboot.controller..*.*(..))")
+    public void aopRange() {
+
+    }
 
 //    //    Pointcut을 패키지 excution으로 지정하지 않고 어노테이션을 명시해서 사용할때는 Pointcut변경 필요
 //    @Pointcut("@annotation(UserAnotation)")
 //    public void aopAnotation() {
 //    }
 
-//    @Before("aopRange()")
-//    public void before(JoinPoint joinPoint) {
-//        System.out.println("[Before]");
-//        Object[] objects = joinPoint.getArgs();
-//        for (Object a : objects) {
-//            System.out.println(a.getClass());
-//        }
-//        System.out.println("비포 클래스 확인 완료");
-//    }
+    @Before("aopRange()")
+    public void before(JoinPoint joinPoint) {
+        System.out.println("[Before]");
+        Object[] objects = joinPoint.getArgs();
+        for (Object a : objects) {
+            System.out.println(a);
+        }
+    }
 
 //    @AfterReturning(value = "aopRange()", returning = "obj")
 //    public Object after(JoinPoint joinPoint, Object obj) {
@@ -36,4 +43,14 @@ public class UserAop {
 //        }
 //        return obj;
 //    }
+
+    @AfterReturning(value = "aopRange()",returning = "obj")
+    public Object myDencoder(JoinPoint joinPoint,Object obj) {
+        if (obj instanceof UserDto) {
+            UserDto dto = (UserDto) obj;
+            String decoding = new String(Base64.getEncoder().encode(dto.getName().getBytes(StandardCharsets.UTF_8)));
+            dto.setName(decoding);
+        }
+        return obj;
+    }
 }
