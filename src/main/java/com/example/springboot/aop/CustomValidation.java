@@ -30,23 +30,23 @@ public @interface CustomValidation {
     // 사용자의 추가 정보를 전달할 수 있는 값으로 주로 심각도를 나탈낼 떄 사용
     Class<? extends Payload>[] payload() default {};
 
-    int min() default 0;
-
-    /**
-     * @return size the element must be lower or equal to
-     */
-    int max() default Integer.MAX_VALUE;
-
-    /**
-     * Defines several {@link Size} annotations on the same element.
-     *
-     * @see Size
-     */
-    @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
-    @Retention(RUNTIME)
-    @Documented
-    @interface List {
-
-        Size[] value();
+//    int min() default 0;
+//
+//    /**
+//     * @return size the element must be lower or equal to
+//     */
+//    int max() default Integer.MAX_VALUE;
+//
+//    /**
+//     * Defines several {@link Size} annotations on the same element.
+//     *
+//     * @see Size
+//     */
+//    @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+//    @Retention(RUNTIME)
+//    @Documented
+//    @interface List {
+//
+//        Size[] value();
     }
-}
+
