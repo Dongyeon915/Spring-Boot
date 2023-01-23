@@ -28,4 +28,9 @@ public class UserController {
     public Object setUser(@Valid @RequestBody UserDto userDto, BindingResult bindingResult) {
         return userDto;
     }
+
+//    @PostMapping("/set")
+//    public Object setInfo(@Valid @RequestBody Object obj){
+//        return obj;
+//    }
 }

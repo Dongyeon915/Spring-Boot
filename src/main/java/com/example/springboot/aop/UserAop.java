@@ -1,21 +1,17 @@
 package com.example.springboot.aop;
 
-import com.example.springboot.dto.EroorDto;
 import com.example.springboot.dto.UserDto;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 
 @Aspect
 @Component
@@ -31,14 +27,14 @@ public class UserAop {
 //    public void aopAnotation() {
 //    }
 
-//    @Before("aopRange()")
-//    public void before(JoinPoint joinPoint) {
-//        System.out.println("[Before]");
-//        Object[] objects = joinPoint.getArgs();
-//        for (Object a : objects) {
-//            System.out.println(a);
-//        }
-//    }
+    @Before("aopRange()")
+    public void before(JoinPoint joinPoint) {
+        System.out.println("[Before]");
+        Object[] objects = joinPoint.getArgs();
+        for (Object a : objects) {
+            System.out.println(a);
+        }
+    }
 
 //    @AfterReturning(value = "aopRange()", returning = "obj")
 //    public Object after(JoinPoint joinPoint, Object obj) {
@@ -50,15 +46,16 @@ public class UserAop {
 //        return obj;
 //    }
 
-//    @AfterReturning(value = "aopRange()",returning = "obj")
-//    public Object myencoder(JoinPoint joinPoint,Object obj) {
-//        if (obj instanceof UserDto) {
-//            UserDto dto = (UserDto) obj;
-//            String encoding = new String(Base64.getEncoder().encode(dto.getName().getBytes(StandardCharsets.UTF_8)));
-//            dto.setName(encoding);
-//        }
-//        return obj;
-//    }
+    @AfterReturning(value = "aopRange()", returning = "obj")
+    public Object myencoder(JoinPoint joinPoint, Object obj) {
+        if (obj instanceof UserDto) {
+            UserDto dto = (UserDto) obj;
+            String encoding = new String(
+                Base64.getEncoder().encode(dto.getName().getBytes(StandardCharsets.UTF_8)));
+            dto.setName(encoding);
+        }
+        return obj;
+    }
 
 //    @Around("aopRange()")
 //    public void responseAround(ProceedingJoinPoint joinPoint){
@@ -76,5 +73,15 @@ public class UserAop {
 //           }
 //       }
 //}
+
+//    @AfterReturning(value = "aopRange()",returning = "obj")
+//    public Object setInfoKind(JoinPoint joinPoint,Object obj){
+//        if (obj instanceof UserDto){
+//            UserDto userDto = (UserDto) obj;
+//            String name = new String(Base64.getEncoder().encode(userDto.getName().getBytes(StandardCharsets.UTF_8)));
+//            userDto.setName(name);
+//        }
+//        return obj;
+//    }
 }
 
