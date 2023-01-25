@@ -2,7 +2,11 @@ package com.example.springboot.controller;
 
 import com.example.springboot.dto.UserDto;
 import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 // 복수 s
+@Slf4j
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -26,6 +31,8 @@ public class UserController {
     @PostMapping("/setuser")
 //    BindingResult는 오류가 발생할 경우 오류 내용을 보관하는 스프링 프레임워크에서 제공하는 객체
     public Object setUser(@Valid @RequestBody UserDto userDto, BindingResult bindingResult) {
+        System.out.println("[UserController] " + userDto.toString());
+        userDto.setAge(userDto.getAge() - 1);
         return userDto;
     }
 

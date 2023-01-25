@@ -1,4 +1,4 @@
-package com.example.springboot.aop;
+package com.example.springboot.validation;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -10,8 +10,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import jakarta.validation.constraints.Size;
-import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -25,12 +23,15 @@ public @interface CustomValidation {
     Class<?>[] groups() default {};
 
     //  Validation이 실패할 경우 반환되는 메세지
-    String message() default "{테스트 확인}";
+    String message() default "테스트 확인";
 
     // 사용자의 추가 정보를 전달할 수 있는 값으로 주로 심각도를 나탈낼 떄 사용
     Class<? extends Payload>[] payload() default {};
 
-//    int min() default 0;
+//  기본 디폴트를 정의하지 않으면 사용시에 사용자가 계속 설정해줘야한다.
+    int min() default 1;
+
+    int max() default 100;
 //
 //    /**
 //     * @return size the element must be lower or equal to
