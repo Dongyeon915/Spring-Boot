@@ -1,5 +1,7 @@
 package com.example.springboot.exception;
 
+import com.example.springboot.controller.ExceptionController;
+import com.example.springboot.controller.UserController;
 import com.example.springboot.dto.ErrorDto;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -17,9 +19,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 // 로그 사용시 어노테이션
 @Slf4j
 // 어디에 적용할지 basePackages
-// 어노테이션을 여러개 사용하고 싶다면 {}, 사용
-// @RestControllerAdvice(assignableTypes = {UserController.class, ExceptionController.class})
-@RestControllerAdvice
+// 어노테이션을 여러개 사용하고 싶다면 {}, 사용@RestControllerAdvice(assignableTypes = {UserController.class, ExceptionController.class})
+//@RestControllerAdvice
+
+// 이딴 식으로 @RestControllerAdvice(basePackages = "com.example.springboot.controller.example.*")
 public class GlobalExcetionAdvice {
 
     @ExceptionHandler(Exception.class)
@@ -28,7 +31,7 @@ public class GlobalExcetionAdvice {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body("[Exception] " + exception.getClass().getName());
     }
-
+// ㅇ
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> exceptionHandler02(NullPointerException nullPointerException) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NullPointException");
@@ -61,4 +64,5 @@ public class GlobalExcetionAdvice {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
     }
+
 }
