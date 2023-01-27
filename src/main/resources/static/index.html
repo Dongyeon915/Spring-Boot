@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<!--  <script src="javascript/test.js"></script>-->
+  <script defer src="javascript/test02.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <p>Name</p>
+    <input type="text" id="name-input" value="steve">
+  </div>
+  <div>
+    <p>Age</p>
+    <input type="number" id="age-input" value="10">
+  </div>
+
+  <button class="user-info-btn">Button</button>
+  <h3 class="name">Default</h3>
+  <h3 class="age">Default</h3>
+  <div id="root-div"></div>
+
+
+  <script type="text/babel">
+    const root =  ReactDOM.createRoot(document.querySelector("#root-div"));
+
+    class MyFuckingTag extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          count: 0
+        };
+      }
+
+      componentDidMount() {
+        console.log("componentDidMount")
+        setInterval(()=> {
+          this.setState((preState) => {
+            return {...preState, count: preState.count+1}
+          })
+        }, 1000)
+      }
+
+
+      render() {
+        console.log("Render")
+        return (
+            <div>
+              <h1>{this.props.message} {this.state.count}</h1>
+            </div>
+        )
+      }
+    }
+
+    root.render(<MyFuckingTag message={"Counter: "}/>);
+  </script>
+</body>
+</html>

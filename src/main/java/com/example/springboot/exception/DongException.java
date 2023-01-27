@@ -22,22 +22,21 @@ public class DongException {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getClass().getName());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> exception02(MethodArgumentNotValidException exception) {
-        BindingResult bindingResult = exception.getBindingResult();
-        if (bindingResult.hasErrors()) {
-            List<FieldError> errors = bindingResult.getFieldErrors();
-            for (FieldError error : errors) {
-                log.info("Field: {}", error.getField());
-                log.info("Field: {}", error.getDefaultMessage());
-            }
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getClass().getName());
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public ResponseEntity<Object> exception02(MethodArgumentNotValidException exception) {
+//        BindingResult bindingResult = exception.getBindingResult();
+//        if (bindingResult.hasErrors()) {
+//            List<FieldError> errors = bindingResult.getFieldErrors();
+//            for (FieldError error : errors) {
+//                log.info("Field: {}", error.getField());
+//                log.info("Field: {}", error.getDefaultMessage());
+//            }
+//        }
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getClass().getName());
+//    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> methodArgumentNotValidException(
-        MethodArgumentNotValidException exception) {
+    public ResponseEntity<Object> methodArgumentNotValidException(MethodArgumentNotValidException exception) {
         BindingResult bindingResult = exception.getBindingResult();
         if (bindingResult.hasErrors()) {
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
@@ -50,4 +49,3 @@ public class DongException {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getClass().getName());
     }
 }
-
