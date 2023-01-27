@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <h1 id="title">홉킨스형</h1>
-  <script defer src="javascript/js_example/jhonExample.js"></script>
+  <script src="javascript/js_example/jhonExample.js"></script>
 </head>
 <body>
 <p>
     Say hello to
-    <input id="name" type="text">
-    <button onclick="sayHello();">
-      입력
-    </button>
+<!-- HTML내에서 이벤트를 작성하는것은 좋지않음 -->
+<!-- onblur 포커스를 잃으면 sayHello()가 실행된다 on~를 통해 이벤트를 추가 할수있다.-->
+<!-- <input onblur="sayHello()" id="name" type="text">-->
+  <input  id="name" type="text">
+  <button>입력</button>
   </p>
 
   <div id="content"></div>
