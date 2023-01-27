@@ -11,7 +11,7 @@ const settings = {
   }
 }
 
-const nameInput = document.querySelector("#name-input")
+const nameInput = document.querySelector( "#name-input")
 const ageInput = document.querySelector("#age-input")
 const userSearchBtn = document.querySelector(".user-info-btn")
 
