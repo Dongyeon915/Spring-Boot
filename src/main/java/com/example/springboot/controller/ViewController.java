@@ -15,11 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @CrossOrigin(origins = "*")
 @Controller
-@RequestMapping("/views")
+@RequestMapping("/abc")
 public class ViewController {
 
-    @GetMapping
+    @RequestMapping("/test")
     public String hello(){
         return "index.html";
+    }
+
+    @RequestMapping("/jhone")
+    public String hello02(){
+        System.out.println("[dslkajdlkasj]");
+        return "Jhone";
     }
 }

@@ -15,23 +15,13 @@ const nameInput = document.querySelector( "#name-input")
 const ageInput = document.querySelector("#age-input")
 const userSearchBtn = document.querySelector(".user-info-btn")
 
-// function noArrow() {
-//   console.log(nameInput.value, ageInput.value)
-//   settings.data = JSON.stringify({
-//     name: nameInput.value,
-//     age: ageInput.value
-//   })
-//   getUser()
-// }
-//
-// userSearchBtn.addEventListener('click', noArrow)
-
 userSearchBtn.addEventListener('click', () => {
   console.log(nameInput.value, ageInput.value)
   settings.data = JSON.stringify({
     name: nameInput.value,
     age: ageInput.value
   })
+  console.log("Serialization", settings.data)
   getUser()
 })
 
@@ -52,5 +42,3 @@ function getUser() {
     console.log("textStatus:", textStatus)
     console.log("errorThrown", errorThrown)});
 }
-
-

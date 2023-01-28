@@ -1,0 +1,14 @@
+#title.active {
+   color: royalblue;
+ }
+
+#title {
+  color: black;
+}
+
+.category-empty.danger {
+  color: red;
+}
+
+.category-empty {
+}

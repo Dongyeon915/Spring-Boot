@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  <script src="/javascript/hollys/hollysAjax.js"></script>
+  <link rel="stylesheet" href="/css/Jone.css">
+  <title>Document</title>
+</head>
+<body>
+    <div>
+      <h3>Fucking Form Action</h3>
+      <form action="http://192.168.1.140:8080/category" method="get">
+        <button type="submit">Get All Categories!</button>
+      </form>
+    </div>
+    <div>
+      <h3>XMLHttpRequest = AJAX -> JQUERY</h3>
+      <div>
+        <input id="all-id" type="button" value="Get All Categories!">
+      </div>
+      <div>
+        <h4>ID로 Category 조회하기</h4>
+        <input type="number" name="id" id="id-input"/>
+        <input id="id-btn" type="submit" value="전송"/>
+        <p class="category-empty"></p>
+      </div>
+      <div class="all-category"></div>
+    </div>
+
+</body>
+</html>
